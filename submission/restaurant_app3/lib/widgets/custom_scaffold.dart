@@ -4,6 +4,7 @@ import 'package:restaurant_app3/common/styles.dart';
 class CustomScaffold extends StatelessWidget {
   final Widget body;
   final String theTitle;
+
   const CustomScaffold({required this.body, required this.theTitle});
 
   @override

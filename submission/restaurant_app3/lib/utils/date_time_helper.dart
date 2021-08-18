@@ -6,8 +6,6 @@ class DateTimeHelper {
     final now = DateTime.now();
     final dateFormat = DateFormat('y/M/d');
     final timeSpecific = "11:00:00";
-    print("THE TIME IS: " + now.toString());
-    print(timeSpecific);
     final completeFormat = DateFormat('y/M/d H:m:s');
 
     // Today Format
@@ -16,7 +14,7 @@ class DateTimeHelper {
     var resultToday = completeFormat.parseStrict(todayDateAndTime);
 
     // Tomorrow Format
-    var formatted = resultToday.add(Duration(days: 1));
+    var formatted = resultToday.add(const Duration(days: 1));
     final tomorrowDate = dateFormat.format(formatted);
     final tomorrowDateAndTime = "$tomorrowDate $timeSpecific";
     var resultTomorrow = completeFormat.parseStrict(tomorrowDateAndTime);

@@ -49,6 +49,7 @@ ThemeData lightTheme = ThemeData(
     titleTextStyle: myTextTheme.headline6,
     elevation: 0,
   ),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       primary: secondaryColor,
@@ -64,11 +65,11 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     selectedItemColor: darkSecondaryColor,
     unselectedItemColor: Colors.grey,
   ),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       primary: secondaryColor,
-      textStyle: TextStyle(),
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(0),
         ),

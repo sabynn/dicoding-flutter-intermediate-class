@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app3/common/styles.dart';
 
 Widget buildMenusCard(BuildContext context, List<dynamic> menuChoice) {
-  return Container(
+  return SizedBox(
     height: 100,
     child: ListView.builder(
       scrollDirection: Axis.horizontal,
@@ -28,7 +28,7 @@ Widget buildMenusCard(BuildContext context, List<dynamic> menuChoice) {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text('Ok'),
+                          child: const Text('Ok'),
                         ),
                       ],
                     );
@@ -77,7 +77,7 @@ Widget buildCategoryCard(String text) {
 Widget buildReviewsCard(BuildContext context, List<dynamic> custReviews) {
   return Padding(
     padding: const EdgeInsets.only(top: 15.0),
-    child: Container(
+    child: SizedBox(
       height: 215,
       child: ListView.builder(
         itemCount: custReviews.length,

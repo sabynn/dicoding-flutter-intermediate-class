@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app3/data/api/api_service.dart';
+import 'package:restaurant_app3/provider/database_provider.dart';
 import 'package:restaurant_app3/provider/restaurants_provider.dart';
 import 'package:restaurant_app3/common/styles.dart';
 import 'package:restaurant_app3/widgets/custom_scaffold.dart';
@@ -61,7 +62,7 @@ class _RestaurantDetailState extends State<RestaurantDetails> {
                 ),
               );
             } else {
-              return Center(child: Text(''));
+              return const Center(child: Text(''));
             }
           },
         ),
@@ -92,12 +93,43 @@ class _RestaurantDetailState extends State<RestaurantDetails> {
                   bottomRight: Radius.circular(20),
                 ),
                 child: Image.network(
-                  resDetail.pictureId,
+                  "https://restaurant-api.dicoding.dev/images/large/" +
+                      resDetail.pictureId,
                 ),
               ),
             ),
+            Consumer<DatabaseProvider>(
+              builder: (context, state, _) {
+                return FutureBuilder<bool>(
+                  future: state.isFavorited(widget.restaurant!.id),
+                  builder: (context, snapshot) {
+                    var isFavorited = snapshot.data ?? false;
+                    return Card(
+                      elevation: 5,
+                      child: SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: isFavorited
+                            ? IconButton(
+                                icon: const Icon(Icons.favorite),
+                                color: Theme.of(context).colorScheme.secondary,
+                                onPressed: () =>
+                                    state.removeFavorite(widget.restaurant!.id),
+                              )
+                            : IconButton(
+                                icon: const Icon(Icons.favorite_border),
+                                color: Theme.of(context).colorScheme.secondary,
+                                onPressed: () =>
+                                    state.addFavorite(widget.restaurant!),
+                              ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -224,7 +256,7 @@ class _RestaurantDetailState extends State<RestaurantDetails> {
                               child: ChoiceChip(
                                 label: Text(_title!),
                                 selected: _value == index,
-                                selectedColor: Color(0xff026af1),
+                                selectedColor: const Color(0xff026af1),
                                 onSelected: (bool selected) {
                                   setState(
                                     () {

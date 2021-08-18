@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app3/common/styles.dart';
-import 'package:restaurant_app3/provider/restaurants_provider.dart';
 
-Widget errorNoConnection(BuildContext context){
+Widget errorNoConnection(BuildContext context) {
   return SingleChildScrollView(
     child: Column(
       children: [
@@ -33,7 +32,7 @@ Widget errorNoConnection(BuildContext context){
   );
 }
 
-Widget noData(BuildContext context, RestaurantsProvider state){
+Widget noData(BuildContext context, var state) {
   return SingleChildScrollView(
     child: Column(
       children: [

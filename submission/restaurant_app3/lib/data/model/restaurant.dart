@@ -17,7 +17,10 @@ class RestaurantsResult {
         message: json["message"],
         count: json["count"],
         restaurants: List<Restaurant>.from(
-            json["restaurants"].map((x) => Restaurant.fromJson(x))),
+          json["restaurants"].map(
+            (x) => Restaurant.fromJson(x),
+          ),
+        ),
       );
 }
 
@@ -52,8 +55,7 @@ class Restaurant {
       description: json["description"],
       city: json["city"],
       address: json["address"],
-      pictureId: "https://restaurant-api.dicoding.dev/images/large/" +
-          json["pictureId"],
+      pictureId: json["pictureId"],
       categories: json["categories"],
       menus: json["menus"],
       rating: json["rating"].toDouble(),

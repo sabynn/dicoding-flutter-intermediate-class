@@ -17,7 +17,7 @@ class RestaurantSplashScreen extends StatelessWidget {
             context,
             PageTransition(
               type: PageTransitionType.bottomToTop,
-              duration:  const Duration(milliseconds: 700),
+              duration: const Duration(milliseconds: 700),
               child: RestaurantsListPage(),
             ),
           );
@@ -53,13 +53,18 @@ class RestaurantSplashScreen extends StatelessWidget {
                         child: SizedBox(
                           height: 50,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                             child: Card(
                               color: primaryColor,
                               child: Center(
                                 child: Text(
                                   'Tap anywhere to see the list!',
-                                  style: Theme.of(context).textTheme.bodyText1,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .apply(color: Colors.black),
                                   textAlign: TextAlign.center,
                                 ),
                               ),

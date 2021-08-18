@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
 import 'package:restaurant_app3/common/navigation.dart';
 import 'package:restaurant_app3/data/model/restaurant.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -20,25 +19,28 @@ class NotificationHelper {
 
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var initializationSettingsAndroid = AndroidInitializationSettings('mipmap/ic_launcher');
+    var initializationSettingsAndroid =
+        const AndroidInitializationSettings('mipmap/ic_launcher');
 
-    var initializationSettingsIOS = IOSInitializationSettings(
+    var initializationSettingsIOS = const IOSInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
     );
 
     var initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+    );
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: (String? payload) async {
-          if (payload != null) {
-            print('notification payload: ' + payload);
-            configureSelectNotificationSubject(RestaurantDetails.routeName);
-          }
-          selectNotificationSubject.add(payload ?? 'empty payload');
-        });
+      if (payload != null) {
+        print('notification payload: ' + payload);
+        configureSelectNotificationSubject(RestaurantDetails.routeName);
+      }
+      selectNotificationSubject.add(payload ?? 'empty payload');
+    });
   }
 
   Future<void> showNotification(
@@ -47,16 +49,23 @@ class NotificationHelper {
     var _channelId = "1";
     var _channelName = "channel_01";
     var _channelDescription = "Restaurants";
-    var restaurant = restaurants.restaurants[Random().nextInt(restaurants.restaurants.length)];
+    var restaurant = restaurants
+        .restaurants[Random().nextInt(restaurants.restaurants.length)];
 
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDescription,
-        importance: Importance.max,
-        priority: Priority.high,
-        ticker: 'ticker',
-        styleInformation: DefaultStyleInformation(true, true));
+      _channelId,
+      _channelName,
+      _channelDescription,
+      importance: Importance.max,
+      priority: Priority.high,
+      ticker: 'ticker',
+      styleInformation: const DefaultStyleInformation(
+        true,
+        true,
+      ),
+    );
 
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
@@ -71,9 +80,9 @@ class NotificationHelper {
 
   void configureSelectNotificationSubject(String route) {
     selectNotificationSubject.stream.listen(
-          (String payload) async {
-            var data = Restaurant.fromJson(json.decode(payload));
-            Navigation.intentWithData(route, data);
+      (String payload) async {
+        var data = Restaurant.fromJson(json.decode(payload));
+        Navigation.intentWithData(route, data);
       },
     );
   }

@@ -8,6 +8,8 @@ import 'package:restaurant_app3/widgets/custom_scaffold.dart';
 class SettingsPage extends StatelessWidget {
   static const routeName = '/settings';
 
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -20,7 +22,7 @@ class SettingsPage extends StatelessWidget {
                 children: [
                   Material(
                     child: ListTile(
-                      title: Text('Dark Theme'),
+                      title: const Text('Dark Theme'),
                       trailing: Switch.adaptive(
                         value: provider.isDarkTheme,
                         onChanged: (value) {
@@ -31,7 +33,7 @@ class SettingsPage extends StatelessWidget {
                   ),
                   Material(
                     child: ListTile(
-                      title: Text('Scheduling News'),
+                      title: const Text('Restaurant Notification'),
                       trailing: Consumer<SchedulingProvider>(
                         builder: (context, scheduled, _) {
                           return Switch.adaptive(

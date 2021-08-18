@@ -17,7 +17,6 @@ class BackgroundService {
 
   factory BackgroundService() => _instance ?? BackgroundService._internal();
 
-
   void initializeIsolate() {
     IsolateNameServer.registerPortWithName(
       port.sendPort,
@@ -29,7 +28,8 @@ class BackgroundService {
     print('Alarm fired!');
     final NotificationHelper _notificationHelper = NotificationHelper();
     var result = await ApiService().fetchRestaurants();
-    await _notificationHelper.showNotification(flutterLocalNotificationsPlugin, result);
+    await _notificationHelper.showNotification(
+        flutterLocalNotificationsPlugin, result);
 
     _uiSendPort ??= IsolateNameServer.lookupPortByName(_isolateName);
     _uiSendPort?.send(null);

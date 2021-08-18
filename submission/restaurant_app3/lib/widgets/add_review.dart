@@ -61,7 +61,10 @@ class AddReview extends StatelessWidget {
                         borderSide: BorderSide(color: secondaryColor),
                       ),
                       hintText: "Input Your Name...",
-                      prefixIcon: const Icon(Icons.person),
+                      prefixIcon: Icon(
+                        Icons.person,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.only(
                         left: 10,
@@ -94,7 +97,10 @@ class AddReview extends StatelessWidget {
                         borderSide: BorderSide(color: secondaryColor),
                       ),
                       hintText: "Input Your Review...",
-                      prefixIcon: const Icon(Icons.rate_review_rounded),
+                      prefixIcon: Icon(
+                        Icons.rate_review_rounded,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.only(
                         left: 10,
