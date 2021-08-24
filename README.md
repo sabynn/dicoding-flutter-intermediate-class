@@ -3,4 +3,4 @@
 - [Submission 2](/submission/restaurant_app2)
 - [Submission 3](/submission/restaurant_app3)
 
-```diff - Warning!``` Only use this repository for study reference. Don't do plagiarism
+ <p style='color:red'> Warning! </p> Only use this repository for study reference. Don't do plagiarism
