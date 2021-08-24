@@ -10,7 +10,7 @@
  
 Main Screen | Main Screen Dark Mode 
 :----------:|:-------------:
-<img src="/screenshot/main_page.png" width=250 height=500/> | <img src=""/screenshot/d_main_page.png"" width=250 height=500/>
+<img src="/screenshot/main_page.png" width=250 height=500/> | <img src="/screenshot/d_main_page.png" width=250 height=500/>
 
 Detail Screen | Detail Screen Dark Mode
 :----------:|:-------------:
