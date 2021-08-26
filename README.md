@@ -3,7 +3,7 @@
 - [Submission 2](/submission/restaurant_app2)
 - [Submission 3](/submission/restaurant_app3)
 </br>
-⚠️**Warning!** Only use this repository for study reference. Don't do plagiarism
+⚠️ **Warning!** Only use this repository for study reference. Don't do plagiarism
 
 ## Libraries Used
 - [Google Fonts](https://pub.dev/packages/google_fonts)
